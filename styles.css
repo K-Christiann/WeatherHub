@@ -1,0 +1,225 @@
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.125);
+    --text-muted: #6c757d;
+    --navbar-bg: #0d6efd;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1d20;
+    --text-color: #e9ecef;
+    --card-bg: #2d3238;
+    --card-border: rgba(255, 255, 255, 0.125);
+    --text-muted: #adb5bd;
+    --navbar-bg: #0a58ca;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    color: var(--text-color);
+}
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.weather-icon {
+    font-size: 3.5rem;
+    color: #ffc107;
+}
+.current-temp {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+
+.metric-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.weather-map {
+    height: 300px;
+    background-color: var(--card-bg);
+    border-radius: 0.375rem;
+    border: 1px solid var(--card-border);
+}
+
+
+[data-theme="dark"] .leaflet-tile {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+
+.navbar-dark {
+    background-color: var(--navbar-bg) !important;
+}
+
+/* Footer */
+.bg-dark {
+    background-color: #212529 !important;
+}
+
+[data-theme="dark"] .bg-dark {
+    background-color: #151719 !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Weather Icon Styles */
+.weather-icon {
+    font-size: 3.5rem;
+    color: #ffc107;
+}
+
+/* Temperature Display */
+.current-temp {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Metric Icons */
+.metric-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Map Container */
+.weather-map {
+    height: 300px;
+    background-color: #f8f9fa;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+.historical-chart {
+    height: 300px;
+    background-color: #f8f9fa;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+.forecast-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+
+.forecast-item {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.forecast-item:last-child {
+    border-bottom: none;
+}
+
+
+.social-links a {
+    color: #6c757d;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .current-temp {
+        font-size: 2rem;
+    }
+    
+    .weather-icon {
+        font-size: 3rem;
+    }
+    
+    .weather-map,
+    .historical-chart {
+        height: 250px;
+    }
+}
+
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Refresh Button Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.refreshing {
+    animation: spin 1s linear infinite;
+}
+
+
+.card {
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.btn-outline-primary:hover {
+    transform: translateY(-1px);
+}
+
+
+.error-state {
+    color: #dc3545;
+    padding: 1rem;
+    text-align: center;
+    background-color: rgba(220, 53, 69, 0.1);
+    border-radius: 0.375rem;
+    margin: 1rem 0;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherHub - Live Weather Station</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fas fa-cloud-sun me-2"></i>
+                WeatherHub
+            </a>
+            <div class="d-flex">
+                <button class="btn btn-outline-light me-2" id="unitToggle">°C | °F</button>
+                <button class="btn btn-outline-light" id="refreshData">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <div class="row g-4">
+            <!-- Current Weather Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="card-title mb-0">Current Weather</h5>
+                            <span class="text-muted small" id="timestamp"></span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center mb-4">
+                            <i class="fas fa-sun weather-icon me-3" id="weatherIcon"></i>
+                            <div>
+                                <div class="current-temp" id="currentTemp">--°C</div>
+                                <div class="text-muted" id="weatherDesc">Loading...</div>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <i class="fas fa-tint metric-icon text-primary"></i>
+                                <div class="text-muted">Humidity</div>
+                                <div id="humidity">--%</div>
+                            </div>
+                            <div class="col-6">
+                                <i class="fas fa-wind metric-icon text-secondary"></i>
+                                <div class="text-muted">Wind Speed</div>
+                                <div id="windSpeed">-- km/h</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hourly Forecast Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Hourly Forecast</h5>
+                        <div id="hourlyForecast">
+                            <!-- Hourly forecast items will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather Map Card -->
+            <div class="col-md-12 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Weather Map</h5>
+                        <div class="weather-map mb-3" id="weatherMap" style="height: 400px;"></div>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-outline-primary btn-sm" id="showPrecipitation">
+                                <i class="fas fa-cloud-rain me-1"></i> Precipitation
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm" id="showTemperature">
+                                <i class="fas fa-temperature-high me-1"></i> Temperature
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm" id="showWind">
+                                <i class="fas fa-wind me-1"></i> Wind
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Historical Data Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h2 class="mb-4">Historical Data</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="btn-group mb-4">
+                            <button class="btn btn-primary" data-period="week">Week</button>
+                            <button class="btn btn-primary" data-period="month">Month</button>
+                            <button class="btn btn-primary" data-period="year">Year</button>
+                        </div>
+                        <div class="historical-chart" id="historicalChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light mt-5 py-4">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h5>About WeatherHub</h5>
+                    <p class="text-muted">Providing accurate weather data and forecasts for your local area.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p class="text-muted mb-1">Email: info@weatherhub.com</p>
+                    <p class="text-muted">Phone: (555) 123-4567</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" defer></script>
+    <script src="main.js" defer></script>
+    
+</body>
+</html>
